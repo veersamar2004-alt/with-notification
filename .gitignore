@@ -1,0 +1,21 @@
+# OS generated files
+.DS_Store
+
+# Maven
+target/
+*.jar
+*.war
+*.ear
+*.log
+mvnw
+mvnw.cmd
+.mvn/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs
+logs/
+*.log

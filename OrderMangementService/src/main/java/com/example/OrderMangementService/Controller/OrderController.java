@@ -11,14 +11,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
-@CrossOrigin(origins = "*")
+@CrossOrigin(allowedOriginPatterns = "*")
 public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private com.example.OrderMangementService.Service.OrderProducer orderProducer;
+
     @PostMapping
     public ResponseEntity<OrderSummary> createOrder(@RequestBody OrderRequest request) {
         OrderSummary createdOrder = orderService.createOrder(request);
+        orderProducer.sendOrder("New Order Created: " + createdOrder.orderId);
         return ResponseEntity.ok(createdOrder);
     }
 
